@@ -6,9 +6,18 @@ import java.util.Enumeration;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 
-public class UIScaler {
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class UI {
 
     private static final float SCALE = 2.5f;
+
+    public static void init() {
+        UI.applyScale();
+		UI.applyDarkTheme();
+        UI.enableFontAntialiasing();
+    }
 
     public static void applyScale() {
         UIDefaults defaults = UIManager.getLookAndFeelDefaults();
@@ -22,5 +31,17 @@ public class UIScaler {
                 UIManager.put(key, newFont);
             }
         }
+    }
+
+    public static void applyDarkTheme() {
+        try {
+            UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatDarculaLaf());
+        } catch (Exception e) {
+            log.error("Error al configurar FlatLaf: ", e);
+        }
+    }
+
+    private static void enableFontAntialiasing() {
+		System.setProperty("awt.useSystemAAFontSettings", "on");
     }
 }
