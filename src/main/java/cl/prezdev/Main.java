@@ -1,7 +1,6 @@
 package cl.prezdev;
 
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
