@@ -14,7 +14,7 @@ import java.awt.FlowLayout;
 @AllArgsConstructor
 public class MainWindow extends JFrame {
 
-    private final ShowMessageButton showMessageButton;
+    private final MainSplitPane mainSplitPane;
 
     @PostConstruct
     public void init(){
@@ -22,10 +22,9 @@ public class MainWindow extends JFrame {
 
         setLayout(new FlowLayout());
 
-        add(showMessageButton);
-
         setSize(300, 100);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setContentPane(mainSplitPane);
     }
 }
