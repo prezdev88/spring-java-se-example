@@ -1,5 +1,7 @@
 package cl.prezdev.gui;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -8,7 +10,9 @@ import javax.swing.JTextArea;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.gui.files.FileInfoPanel;
 import cl.prezdev.gui.files.FileTree;
+import cl.prezdev.gui.files.FileTreeNode;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
@@ -17,10 +21,18 @@ import lombok.AllArgsConstructor;
 public class MainSplitPane extends JSplitPane {
 
     private final FileTree fileTree;
+    private final FileInfoPanel fileInfoPanel;
 
     @PostConstruct
     public void init() {
         setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+
+        fileTree.addTreeSelectionListener(e -> {
+            Object node = fileTree.getLastSelectedPathComponent();
+            if (node instanceof FileTreeNode ftn) {
+                fileInfoPanel.setFile(ftn.getFile());
+            }
+        });
 
         JScrollPane treeScroll = new JScrollPane(fileTree);
 
@@ -29,7 +41,8 @@ public class MainSplitPane extends JSplitPane {
         JScrollPane textScroll = new JScrollPane(textArea);
 
         JPanel bottomPanel = new JPanel();
-        bottomPanel.add(new JLabel("Panel inferior"));
+        bottomPanel.setLayout(new BorderLayout());
+        bottomPanel.add(fileInfoPanel);
 
         JSplitPane rightSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, textScroll, bottomPanel);
         rightSplit.setResizeWeight(0.7); // 70% arriba, 30% abajo
