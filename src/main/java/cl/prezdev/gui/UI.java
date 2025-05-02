@@ -11,6 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UI {
 
+    private UI() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     private static final float SCALE = 2.5f;
 
     public static void init() {
