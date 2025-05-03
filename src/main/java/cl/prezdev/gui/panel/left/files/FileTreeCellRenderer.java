@@ -1,4 +1,4 @@
-package cl.prezdev.gui.files;
+package cl.prezdev.gui.panel.left.files;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;

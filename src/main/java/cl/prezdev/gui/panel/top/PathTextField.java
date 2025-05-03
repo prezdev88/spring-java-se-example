@@ -1,4 +1,4 @@
-package cl.prezdev.gui;
+package cl.prezdev.gui.panel.top;
 
 import javax.swing.JTextField;
 

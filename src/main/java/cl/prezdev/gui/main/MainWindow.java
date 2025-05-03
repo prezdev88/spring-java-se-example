@@ -1,4 +1,4 @@
-package cl.prezdev.gui;
+package cl.prezdev.gui.main;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -6,6 +6,9 @@ import javax.swing.WindowConstants;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.gui.menubar.AppMenuBar;
+import cl.prezdev.gui.panel.MainSplitPane;
+import cl.prezdev.gui.panel.top.TopPanel;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
@@ -21,7 +24,7 @@ public class MainWindow extends JFrame {
 
     @PostConstruct
     public void init(){
-       setTitle("Ventana Swing con JTextField");
+        setTitle("Ventana Swing con JTextField");
         setLayout(new BorderLayout());
 
         add(topPanel, BorderLayout.NORTH);                // Colocar el panel en la parte superior

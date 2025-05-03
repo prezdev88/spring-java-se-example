@@ -1,4 +1,4 @@
-package cl.prezdev.gui;
+package cl.prezdev.gui.panel;
 
 import java.awt.BorderLayout;
 
@@ -9,9 +9,9 @@ import javax.swing.JTextArea;
 
 import org.springframework.stereotype.Component;
 
-import cl.prezdev.gui.files.FileInfoPanel;
-import cl.prezdev.gui.files.FileTree;
-import cl.prezdev.gui.files.FileTreeNode;
+import cl.prezdev.gui.panel.left.files.FileInfoPanel;
+import cl.prezdev.gui.panel.left.files.FileTree;
+import cl.prezdev.gui.panel.left.files.FileTreeNode;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 

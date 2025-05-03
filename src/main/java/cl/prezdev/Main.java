@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
-import cl.prezdev.gui.MainWindow;
 import cl.prezdev.gui.UI;
+import cl.prezdev.gui.main.MainWindow;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
