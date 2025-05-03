@@ -1,40 +1,30 @@
 package cl.prezdev.gui.files;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.gui.UtilIcon;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 
-import java.net.URL;
-import java.awt.Image;
 import java.io.File;
 
 @Component
+@RequiredArgsConstructor
 public class FileTreeCellRenderer extends DefaultTreeCellRenderer {
 
     private transient Icon folderIcon;
     private transient Icon fileIcon;
+    private final UtilIcon utilIcon;
 
     @PostConstruct
     public void init() {
-        folderIcon = loadIcon("/icons/folder.png");
-        fileIcon = loadIcon("/icons/file.png");
-    }
-
-    private Icon loadIcon(String path) {
-        URL resource = getClass().getResource(path);
-        if (resource == null) {
-            System.err.println("No se encontró el ícono: " + path);
-            return null;
-        }
-        ImageIcon original = new ImageIcon(resource);
-        Image scaled = original.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
-        return new ImageIcon(scaled);
+        folderIcon = utilIcon.loadIcon("/icons/folder.png");
+        fileIcon = utilIcon.loadIcon("/icons/file.png");
     }
 
     @Override

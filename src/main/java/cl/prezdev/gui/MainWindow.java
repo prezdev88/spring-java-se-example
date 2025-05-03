@@ -1,30 +1,40 @@
 package cl.prezdev.gui;
 
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.TopPanel;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 @Component
 @AllArgsConstructor
 public class MainWindow extends JFrame {
 
     private final MainSplitPane mainSplitPane;
+    private final MenuBar menuBar;
+    private final TopPanel topPanel;
 
     @PostConstruct
     public void init(){
-        super.setTitle("Ventana Swing con botón");
+       setTitle("Ventana Swing con JTextField");
+        setLayout(new BorderLayout());
 
-        setLayout(new FlowLayout());
+        add(topPanel, BorderLayout.NORTH);                // Colocar el panel en la parte superior
+        add(mainSplitPane, BorderLayout.CENTER);      
 
-        setSize(300, 100);
+        // Establecer el contenido principal
+        add(mainSplitPane, BorderLayout.CENTER); // Parte central
+
+        setSize(800, 600); // Ajusta el tamaño según necesites
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setContentPane(mainSplitPane);
+        setVisible(true); // Asegura que la ventana se muestre
+        setJMenuBar(menuBar);
     }
 }

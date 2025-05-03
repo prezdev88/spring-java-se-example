@@ -1,0 +1,16 @@
+package cl.prezdev.gui;
+
+import javax.swing.JTextField;
+
+import org.springframework.stereotype.Component;
+
+import jakarta.annotation.PostConstruct;
+
+@Component
+public class PathTextField extends JTextField {
+    @PostConstruct
+    private void init() {
+        setEditable(false);
+        setText("/home/prezdev");
+    }      
+}
