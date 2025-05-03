@@ -1,7 +1,6 @@
 package cl.prezdev.gui.main;
 
 import javax.swing.JFrame;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import org.springframework.stereotype.Component;
@@ -27,16 +26,13 @@ public class MainWindow extends JFrame {
         setTitle("Ventana Swing con JTextField");
         setLayout(new BorderLayout());
 
-        add(topPanel, BorderLayout.NORTH);                // Colocar el panel en la parte superior
+        add(topPanel, BorderLayout.NORTH);
         add(mainSplitPane, BorderLayout.CENTER);      
 
-        // Establecer el contenido principal
-        add(mainSplitPane, BorderLayout.CENTER); // Parte central
-
-        setSize(800, 600); // Ajusta el tamaño según necesites
+        setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true); // Asegura que la ventana se muestre
+        setVisible(true);
         setJMenuBar(appMenuBar);
     }
 }

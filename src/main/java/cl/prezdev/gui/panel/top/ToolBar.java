@@ -1,13 +1,11 @@
 package cl.prezdev.gui.panel.top;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import org.springframework.stereotype.Component;
 
 import cl.prezdev.service.UtilIconService;
-import cl.prezdev.service.impl.UtilIconServiceImpl;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 

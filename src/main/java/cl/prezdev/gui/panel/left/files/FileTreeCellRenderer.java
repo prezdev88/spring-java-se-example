@@ -8,7 +8,6 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import org.springframework.stereotype.Component;
 
 import cl.prezdev.service.UtilIconService;
-import cl.prezdev.service.impl.UtilIconServiceImpl;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 

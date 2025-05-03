@@ -1,9 +1,6 @@
 package cl.prezdev.gui.menubar;
 
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Component;
 
