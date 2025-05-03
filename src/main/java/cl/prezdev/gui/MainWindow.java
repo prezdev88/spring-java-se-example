@@ -6,7 +6,6 @@ import javax.swing.WindowConstants;
 
 import org.springframework.stereotype.Component;
 
-import cl.prezdev.TopPanel;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
@@ -17,7 +16,7 @@ import java.awt.BorderLayout;
 public class MainWindow extends JFrame {
 
     private final MainSplitPane mainSplitPane;
-    private final MenuBar menuBar;
+    private final AppMenuBar appMenuBar;
     private final TopPanel topPanel;
 
     @PostConstruct
@@ -35,6 +34,6 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true); // Asegura que la ventana se muestre
-        setJMenuBar(menuBar);
+        setJMenuBar(appMenuBar);
     }
 }

@@ -7,7 +7,8 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.springframework.stereotype.Component;
 
-import cl.prezdev.gui.UtilIcon;
+import cl.prezdev.service.UtilIconService;
+import cl.prezdev.service.impl.UtilIconServiceImpl;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
@@ -19,12 +20,12 @@ public class FileTreeCellRenderer extends DefaultTreeCellRenderer {
 
     private transient Icon folderIcon;
     private transient Icon fileIcon;
-    private final UtilIcon utilIcon;
+    private final transient UtilIconService utilIconService;
 
     @PostConstruct
     public void init() {
-        folderIcon = utilIcon.loadIcon("/icons/folder.png");
-        fileIcon = utilIcon.loadIcon("/icons/file.png");
+        folderIcon = utilIconService.load("/icons/folder.png");
+        fileIcon = utilIconService.load("/icons/file.png");
     }
 
     @Override

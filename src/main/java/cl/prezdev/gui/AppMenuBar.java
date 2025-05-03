@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 
 @Component
-public class MenuBar extends JMenuBar {
+public class AppMenuBar extends JMenuBar {
     @PostConstruct
     private void init() {
         JMenu fileMenu = new JMenu("Archivo");

@@ -1,4 +1,4 @@
-package cl.prezdev;
+package cl.prezdev.gui;
 
 import java.awt.BorderLayout;
 
@@ -6,9 +6,6 @@ import javax.swing.JPanel;
 
 import org.springframework.stereotype.Component;
 
-import cl.prezdev.gui.MenuBar;
-import cl.prezdev.gui.PathTextField;
-import cl.prezdev.gui.ToolBar;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
