@@ -97,8 +97,8 @@ public class FileInfoPanel extends JPanel {
         for (java.awt.Component comp : getComponents()) {
             if (comp instanceof JPanel row) {
                 for (java.awt.Component label : row.getComponents()) {
-                    if (label instanceof JLabel && ((JLabel) label).getText() != null && !((JLabel) label).getText().endsWith(":")) {
-                        ((JLabel) label).setText("-");
+                    if (label instanceof JLabel jlabel && jlabel.getText() != null && !jlabel.getText().endsWith(":")) {
+                        jlabel.setText("-");
                     }
                 }
             }
