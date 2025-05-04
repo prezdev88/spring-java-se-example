@@ -17,16 +17,16 @@ public class ToolBar extends JToolBar {
 
     @PostConstruct
     private void init() {
-        JButton backButton = new JButton(utilIconService.load("/icons/back.png"));
+        JButton backButton = new JButton(utilIconService.load("toolbar.back"));
         backButton.setToolTipText("Atrás");
 
-        JButton forwardButton = new JButton(utilIconService.load("/icons/forward.png"));
+        JButton forwardButton = new JButton(utilIconService.load("toolbar.forward"));
         forwardButton.setToolTipText("Adelante");
 
-        JButton upButton = new JButton(utilIconService.load("/icons/up.png"));
+        JButton upButton = new JButton(utilIconService.load("toolbar.up"));
         upButton.setToolTipText("Subir un nivel");
 
-        JButton homeButton = new JButton(utilIconService.load("/icons/home.png"));
+        JButton homeButton = new JButton(utilIconService.load("toolbar.home"));
         homeButton.setToolTipText("Ir a inicio");
 
         add(backButton);

@@ -23,8 +23,8 @@ public class FileTreeCellRenderer extends DefaultTreeCellRenderer {
 
     @PostConstruct
     public void init() {
-        folderIcon = utilIconService.load("/icons/folder.png");
-        fileIcon = utilIconService.load("/icons/file.png");
+        folderIcon = utilIconService.load("file-explorer.folder");
+        fileIcon = utilIconService.load("file-explorer.file");
     }
 
     @Override

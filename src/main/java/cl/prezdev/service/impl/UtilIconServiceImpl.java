@@ -8,17 +8,24 @@ import javax.swing.ImageIcon;
 
 import org.springframework.stereotype.Service;
 
+import cl.prezdev.config.IconsConfig;
 import cl.prezdev.service.UtilIconService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class UtilIconServiceImpl implements UtilIconService {
+
+    private final IconsConfig iconsConfig;
+
     @Override
-    public Icon load(String path) {
-        URL resource = getClass().getResource(path);
+    public Icon load(String propertyKey) {
+        String iconPath = iconsConfig.getIconPath(propertyKey);
+        URL resource = getClass().getResource(iconPath);
         if (resource == null) {
-            log.error("No se encontró el ícono: {}", path);
+            log.error("No se encontró el ícono: {}", iconPath);
             return null;
         }
         ImageIcon original = new ImageIcon(resource);
