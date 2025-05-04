@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.i18n.MessageService;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
@@ -13,29 +15,39 @@ import java.text.SimpleDateFormat;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class FileInfoPanel extends JPanel {
 
-    private final JLabel nameLabel = new JLabel();
-    private final JLabel pathLabel = new JLabel();
-    private final JLabel sizeLabel = new JLabel();
-    private final JLabel typeLabel = new JLabel();
-    private final JLabel modifiedLabel = new JLabel();
-    private final JLabel permissionsLabel = new JLabel();
+    private JLabel nameLabel;
+    private JLabel pathLabel;
+    private JLabel sizeLabel;
+    private JLabel typeLabel;
+    private JLabel modifiedLabel;
+    private JLabel permissionsLabel;
 
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private SimpleDateFormat dateFormat;
+    private final transient MessageService messageService;
 
     @PostConstruct
     public void init () {
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        nameLabel = new JLabel();
+        pathLabel = new JLabel();
+        sizeLabel = new JLabel();
+        typeLabel = new JLabel();
+        modifiedLabel = new JLabel();
+        permissionsLabel = new JLabel();
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(BorderFactory.createTitledBorder("Información del archivo"));
+        setBorder(BorderFactory.createTitledBorder(messageService.getMessage("file.info.title")));
         setPreferredSize(new Dimension(300, 200));
 
-        addRow("Nombre:", nameLabel);
-        addRow("Ruta:", pathLabel);
-        addRow("Tamaño:", sizeLabel);
-        addRow("Tipo:", typeLabel);
-        addRow("Modificado:", modifiedLabel);
-        addRow("Permisos:", permissionsLabel);
+        addRow(messageService.getMessage("file.info.name"), nameLabel);
+        addRow(messageService.getMessage("file.info.path"), pathLabel);
+        addRow(messageService.getMessage("file.info.size"), sizeLabel);
+        addRow(messageService.getMessage("file.info.type"), typeLabel);
+        addRow(messageService.getMessage("file.info.modified"), modifiedLabel);
+        addRow(messageService.getMessage("file.info.permissions"), permissionsLabel);
 
         setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
     }
@@ -59,7 +71,6 @@ public class FileInfoPanel extends JPanel {
         row.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
         add(row);
     }
-    
 
     public void setFile(File file) {
         if (file == null || !file.exists()) {
@@ -70,7 +81,7 @@ public class FileInfoPanel extends JPanel {
         nameLabel.setText(file.getName());
         pathLabel.setText(file.getAbsolutePath());
         sizeLabel.setText(file.isFile() ? file.length() + " bytes" : "-");
-        typeLabel.setText(file.isDirectory() ? "Directorio" : "Archivo");
+        typeLabel.setText(file.isDirectory() ? messageService.getMessage("file.info.type.directory") : messageService.getMessage("file.info.type.file"));
         modifiedLabel.setText(dateFormat.format(file.lastModified()));
 
         StringBuilder perms = new StringBuilder();

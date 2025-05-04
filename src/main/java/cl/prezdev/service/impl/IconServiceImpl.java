@@ -9,14 +9,14 @@ import javax.swing.ImageIcon;
 import org.springframework.stereotype.Service;
 
 import cl.prezdev.config.IconsConfig;
-import cl.prezdev.service.UtilIconService;
+import cl.prezdev.service.IconService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 @AllArgsConstructor
-public class UtilIconServiceImpl implements UtilIconService {
+public class IconServiceImpl implements IconService {
 
     private final IconsConfig iconsConfig;
 

@@ -4,6 +4,7 @@ import javax.swing.JMenu;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.i18n.MessageService;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
@@ -12,10 +13,11 @@ import lombok.AllArgsConstructor;
 public class HelpMenu extends JMenu {
 
     private final AboutMenuItem aboutMenuItem;
+    private final transient MessageService messageService;
 
     @PostConstruct
     private void init() {
-        setText("Ayuda");
+        setText(messageService.getMessage("menu.help"));
         add(aboutMenuItem);
     }
 

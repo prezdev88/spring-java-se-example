@@ -5,7 +5,8 @@ import javax.swing.JToolBar;
 
 import org.springframework.stereotype.Component;
 
-import cl.prezdev.service.UtilIconService;
+import cl.prezdev.i18n.MessageService;
+import cl.prezdev.service.IconService;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
@@ -13,21 +14,22 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ToolBar extends JToolBar {
 
-    private final transient UtilIconService utilIconService;
+    private final transient IconService utilIconService;
+    private final transient MessageService messageService;
 
     @PostConstruct
     private void init() {
         JButton backButton = new JButton(utilIconService.load("toolbar.back"));
-        backButton.setToolTipText("Atrás");
+        backButton.setToolTipText(messageService.getMessage("toolbar.back"));
 
         JButton forwardButton = new JButton(utilIconService.load("toolbar.forward"));
-        forwardButton.setToolTipText("Adelante");
+        forwardButton.setToolTipText(messageService.getMessage("toolbar.forward"));
 
         JButton upButton = new JButton(utilIconService.load("toolbar.up"));
-        upButton.setToolTipText("Subir un nivel");
+        upButton.setToolTipText(messageService.getMessage("toolbar.up"));
 
         JButton homeButton = new JButton(utilIconService.load("toolbar.home"));
-        homeButton.setToolTipText("Ir a inicio");
+        homeButton.setToolTipText(messageService.getMessage("toolbar.home"));
 
         add(backButton);
         add(forwardButton);
