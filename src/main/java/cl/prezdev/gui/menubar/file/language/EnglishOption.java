@@ -6,13 +6,14 @@ import javax.swing.JCheckBoxMenuItem;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.i18n.LocaleChangeListener;
 import cl.prezdev.i18n.MessageService;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
 @Component
 @AllArgsConstructor
-public class EnglishOption extends JCheckBoxMenuItem {
+public class EnglishOption extends JCheckBoxMenuItem implements LocaleChangeListener {
 
     private final transient MessageService messageService;
     private final transient ActionListener englishOptionListener;
@@ -22,5 +23,12 @@ public class EnglishOption extends JCheckBoxMenuItem {
         setText(messageService.getMessage("menu.file.language.english"));
         setSelected(true);
         addActionListener(englishOptionListener);
+
+        messageService.addLocaleChangeListener(this);
+    }
+
+    @Override
+    public void onLocaleChange() {
+        setText(messageService.getMessage("menu.file.language.english"));
     }
 }
