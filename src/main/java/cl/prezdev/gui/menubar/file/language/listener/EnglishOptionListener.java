@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
 import org.springframework.stereotype.Component;
 
 import cl.prezdev.i18n.MessageService;
