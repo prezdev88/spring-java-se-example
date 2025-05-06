@@ -1,14 +1,14 @@
 package cl.prezdev.gui.panel;
 
 import java.awt.BorderLayout;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTextArea;
 
 import org.springframework.stereotype.Component;
 
+import cl.prezdev.gui.panel.center.DesktopPanel;
+import cl.prezdev.gui.panel.center.IconPanel;
 import cl.prezdev.gui.panel.left.files.FileInfoPanel;
 import cl.prezdev.gui.panel.left.files.FileTree;
 import cl.prezdev.gui.panel.left.files.FileTreeNode;
@@ -21,6 +21,8 @@ public class MainSplitPane extends JSplitPane {
 
     private final FileTree fileTree;
     private final FileInfoPanel fileInfoPanel;
+    private final DesktopPanel desktopPanel;
+    private final transient IconPanel iconPanel;
 
     @PostConstruct
     public void init() {
@@ -35,9 +37,11 @@ public class MainSplitPane extends JSplitPane {
 
         JScrollPane treeScroll = new JScrollPane(fileTree);
 
-        // Panel derecho: otro SplitPane vertical
-        JTextArea textArea = new JTextArea("Área superior");
-        JScrollPane textScroll = new JScrollPane(textArea);
+        desktopPanel.addIcon(iconPanel.createIcon("icono1", "file-explorer.folder"));
+        desktopPanel.addIcon(iconPanel.createIcon("icono2", "file-explorer.folder"));
+        desktopPanel.addIcon(iconPanel.createIcon("icono3", "file-explorer.file"));
+
+        JScrollPane textScroll = new JScrollPane(desktopPanel);
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout());
