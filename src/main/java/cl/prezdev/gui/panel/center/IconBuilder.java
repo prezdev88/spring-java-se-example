@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 
 @Component
 @AllArgsConstructor
-public class IconPanel {
+public class IconBuilder {
 
     private final IconService iconService;
 

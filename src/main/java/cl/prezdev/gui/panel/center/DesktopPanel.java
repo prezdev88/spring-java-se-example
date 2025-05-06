@@ -66,14 +66,9 @@ public class DesktopPanel extends JPanel {
 
         // Listener para organizar íconos automáticamente cuando el componente esté visible
         addComponentListener(new ComponentAdapter() {
-            private boolean firstTime = true;
-
             @Override
             public void componentResized(ComponentEvent e) {
-                if (firstTime) {
-                    organizeIcons();
-                    firstTime = false;
-                }
+                organizeIcons();
             }
         });
     }
@@ -141,11 +136,14 @@ public class DesktopPanel extends JPanel {
         int padding = 10;
         int x = padding;
         int y = padding;
-        int panelWidth = getWidth();
+        int panelWidth = getParent() != null ? getParent().getWidth() : 0;
 
         if (panelWidth == 0) {
             return;
         }
+
+        int maxWidth = 0; // Para calcular el ancho total necesario
+        int maxHeight = 0; // Para calcular el alto total necesario
 
         for (int i = 0; i < getComponentCount(); i++) {
             if (getComponent(i) instanceof JPanel) {
@@ -158,9 +156,15 @@ public class DesktopPanel extends JPanel {
                     x = padding;
                     y += iconHeight + padding;
                 }
+
+                // Actualizar el tamaño máximo necesario
+                maxWidth = Math.max(maxWidth, x + iconWidth);
+                maxHeight = Math.max(maxHeight, y + iconHeight);
             }
         }
 
+        // Ajustar el tamaño del DesktopPanel para que se ajuste al contenido
+        setPreferredSize(new java.awt.Dimension(maxWidth, maxHeight));
         revalidate();
         repaint();
     }
