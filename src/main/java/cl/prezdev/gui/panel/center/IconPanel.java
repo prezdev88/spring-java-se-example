@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import org.springframework.stereotype.Component;
 
@@ -30,15 +31,14 @@ public class IconPanel {
         iconPanel.setOpaque(false);
 
         Icon icon = iconService.load(iconPropertyKey);
-        if (icon instanceof ImageIcon) {
-            ImageIcon imageIcon = (ImageIcon) icon;
+        if (icon instanceof ImageIcon imageIcon) {
             icon = new ImageIcon(imageIcon.getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         }
 
         JLabel iconLabel = new JLabel(icon);
-        iconLabel.setHorizontalAlignment(JLabel.CENTER);
+        iconLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel textLabel = new JLabel(text, JLabel.CENTER);
+        JLabel textLabel = new JLabel(text, SwingConstants.CENTER);
         textLabel.setForeground(Color.WHITE);
 
         iconPanel.add(iconLabel, BorderLayout.CENTER);
@@ -52,10 +52,14 @@ public class IconPanel {
             }
 
             @Override
-            public void mousePressed(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {
+                // This method is intentionally left empty as no action is required on mouse press.
+            }
 
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                // This method is intentionally left empty as no action is required on mouse release.
+            }
 
             @Override
             public void mouseEntered(MouseEvent e) {
