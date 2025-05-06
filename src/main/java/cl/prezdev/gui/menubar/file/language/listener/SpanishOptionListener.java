@@ -19,8 +19,6 @@ public class SpanishOptionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        log.info("Spanish option selected");
         messageService.setLocale(new Locale("es"));
-        log.info("Language changed to Spanish and UI restarted");
     }
 }

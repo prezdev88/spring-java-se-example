@@ -19,8 +19,6 @@ public class EnglishOptionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        log.info("English option selected");
         messageService.setLocale(Locale.ENGLISH);
-        log.info("Language changed to English and UI updated");
     }
 }

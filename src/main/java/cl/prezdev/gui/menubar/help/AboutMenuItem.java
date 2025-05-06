@@ -3,16 +3,20 @@ package cl.prezdev.gui.menubar.help;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import cl.prezdev.i18n.LocaleChangeListener;
 import cl.prezdev.i18n.MessageService;
 import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AboutMenuItem extends JMenuItem implements LocaleChangeListener {
+
+    @Value("${project.version}")
+    private String version;
 
     private final transient MessageService messageService;
 
@@ -25,8 +29,8 @@ public class AboutMenuItem extends JMenuItem implements LocaleChangeListener {
     }
 
     private void showAboutDialog() {
-        String version = messageService.getMessage("version");
-        JOptionPane.showMessageDialog(null, version + " 1.0");
+        String versionI18n = messageService.getMessage("version");
+        JOptionPane.showMessageDialog(null, versionI18n + " " + version);
     }
 
     @Override
